@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void bubbleSort(int arr[], int n) {
+void bubbleSort(int arr[], int n) { //Это сортировка пузырьком
     for (int i = 0; i < n - 1; i++) {
         int swapped = 0;
         
