@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // Это программа на c
 
 void bubbleSort(int arr[], int n) { //Это сортировка пузырьком
     for (int i = 0; i < n - 1; i++) {
