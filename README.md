@@ -171,10 +171,7 @@ Total 9 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), done.
 ...
 ```
-
-**вот, что вышло**
-![alt text](imgs/image.png)
-почему 8 коммитов? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
+Всего у меня получилось 8 коммитов. Почему? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
 
 ## Теперь задания с ветками
 
@@ -301,6 +298,14 @@ To https://github.com/Hadomir01/bulochka
    55db97b..67a77fa  main -> main
 branch 'main' set up to track 'origin/main'.
 ```
-обновил удаленную ветку main:s
+обновил удаленную ветку main:
 ![alt text](imgs/image-2.png)
+</details>
+
+<details>
+<summary> На 4... </summary>
+
+## На оценку 4
+
+1. ****
 </details>
