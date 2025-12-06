@@ -307,5 +307,207 @@ branch 'main' set up to track 'origin/main'.
 
 ## На оценку 4
 
-1. ****
+1. **вернемся на ветку mybranch**
+
+2. **добавим в sort.c функцию main:**
+```c
+int main() {
+    int a[3] = {1, 2, 3};
+    bubbleSort(a, 3);
+}
+```
+
+3-4. **git diff:**
+```git
+diff --git a/sort.c b/sort.c
+index eca8ac4..e79feec 100644
+--- a/sort.c
++++ b/sort.c
+
+...
+
++
++int main() {
++    int a[3] = {1, 2, 3};
++    bubbleSort(a, 3);
++}
+\ No newline at end of file
+```
+сейчас показывает последнее добавленное изменение, а **git diff --staged** пустой... 
+
+5-7. **добавим в staged и посмотрим, что теперь говорят git diff и git diff --staged**
+
+git diff пустой... а git diff --staged:
+```
+diff --git a/sort.c b/sort.c
+index eca8ac4..e79feec 100644
+--- a/sort.c
++++ b/sort.c
+
+...
+
++
++int main() {
++    int a[3] = {1, 2, 3};
++    bubbleSort(a, 3);
++}
+\ No newline at end of file
+```
+т. е. показывает тоже, что и git diff до добавления файла в staged...
+
+8-10. **продолжаем эксперимент. снова изменим файл и посмотри вывод команд...**
+
+git diff:
+```git
+diff --git a/sort.c b/sort.c
+index e79feec..75126f9 100644
+--- a/sort.c
++++ b/sort.c
+
+...
+
+ int main() {
+-    int a[3] = {1, 2, 3};
++    int a[3] = {1, 2};
+     bubbleSort(a, 3);
+ }
+\ No newline at end of file
+```
+
+git diff --staged:
+```git
+diff --git a/sort.c b/sort.c
+index eca8ac4..e79feec 100644
+--- a/sort.c
++++ b/sort.c
+
+...
+
++
++int main() {
++    int a[3] = {1, 2, 3};
++    bubbleSort(a, 3);
++}
+\ No newline at end of file
+```
+
+11. **что же здесь происходит?**
+
+Дело в том, что git diff показывает изменения файлов, еще не добавлленных в staged, а git diff --staged показывает изменения файлов уже в staged. Так как мы не коммитили предпоследнее изменение sort.c, он все еще находится в staged и --staged учитывает и это изменение. поэтому если мы пропишем git status, то увидим sort.c дважды...
+
+12. **git status:**
+```git
+On branch mybranch
+Your branch is up to date with 'origin/mybranch'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   sort.c
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sort.c
+...
+```
+да, sort.c встретился дважды...
+
+13. **вернем отправленный в staged sort.c назад**
+
+14. **git status:**
+```git
+On branch mybranch
+Your branch is up to date with 'origin/mybranch'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sort.c
+...
+```
+теперь показывается только 1 sort.c (тот, где мы удаляли один элемент из массива)
+
+15. **теперь индексируем и коммитим...**
+
+16. **git log:**
+```git
+commit 007a4da4df17530e584755eb4d5a476cfe35f503 (HEAD -> mybranch)
+Author: Hadomir01 <okser0656@gmail.com>
+Date:   Sat Dec 6 19:53:39 2025 +0700
+
+    Изменил sort.c
+
+commit 786a58983793f0b615dce6ac6169090cfaac6163 (origin/mybranch)
+Author: Hadomir01 <okser0656@gmail.com>
+Date:   Sat Dec 6 18:07:41 2025 +0700
+
+    создал файл с фотографиями
+...
+```
+git log с графиком:
+```git
+* 007a4da (HEAD -> mybranch) Изменил sort.c
+* 786a589 (origin/mybranch) создал файл с фотографиями
+* 15d2900 создал файл file1.txt
+| * 6a441f6 (origin/main, main) Доп. изменения README.md
+| * f375a8e Отредактировал README.md
+| * 5f6b963 добавил README.md и фоточки к нему
+| * 67a77fa создал file2.txt
+|/  
+* 55db97b теперь точно добавил коммент в первую строку
+...
+```
+указатель HEAD на ветку mybranch
+
+17-18. **отредактируем sort.c снова, добавив printf()**
+```c
+...
+int main() {
+    int a[3] = {1, 2};
+    bubbleSort(a, 2);
+    printf("hello git!\n");
+}
+```
+
+19. **git status:**
+```git
+On branch mybranch
+Your branch is ahead of 'origin/mybranch' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sort.c
+...
+```
+говорит, что у нас есть измененный sort.c и ветка mybranch содержит 1 новый коммит...
+
+20-22. **git restore sort.c восстановил наш файл до закоммиченного состояния:**
+```c
+...
+int main() {
+    int a[3] = {1, 2};
+    bubbleSort(a, 3);
+}
+```
+а git status скажет:
+```git
+On branch mybranch
+Your branch is ahead of 'origin/mybranch' by 1 commit.
+  (use "git push" to publish your local commits)
+...
+```
+что у нас нет измененных файлов, есть только 1 коммит
+
+23. **запушим этот коммит на удаленку**
+
+вот как выглядит mybranch на удаленке
+![alt text](imgs/image-3.png)
+
+и если мы проверим sort.c ...
+
+![alt text](imgs/image-4.png)
+
+сохранились изменения без printf
 </details>
