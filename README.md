@@ -169,12 +169,11 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 1.12 KiB | 571.00 KiB/s, done.
 Total 9 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/Hadomir01/bulochka
-   b7dd34a..55db97b  main -> main
+...
 ```
 
 **вот, что вышло**
-![alt text](image.png)
+![alt text](imgs/image.png)
 почему 8 коммитов? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
 
 ## Теперь задания с ветками
@@ -237,11 +236,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 * 55db97b (HEAD -> main, origin/main) теперь точно добавил коммент в первую строку
 * c6b06e2 добавил коммент в первую строку
 * 9e4d180 Добавили
-* b7dd34a (bulochka/main) Delete programming_C directory
-* 2dfcd52 Delete Hello_world.c
-* d38fba1 Update Hello_world.c
-* 521423f hello_world.c
-* e20c128 Hello_world.c
+...
 ```
 заметим, что нет последнего коммита, где мы создали file1.txt, т. к. он в другой ветке...
 
@@ -260,11 +255,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 * 55db97b (origin/main) теперь точно добавил коммент в первую строку
 * c6b06e2 добавил коммент в первую строку
 * 9e4d180 Добавили
-* b7dd34a (bulochka/main) Delete programming_C directory
-* 2dfcd52 Delete Hello_world.c
-* d38fba1 Update Hello_world.c
-* 521423f hello_world.c
-* e20c128 Hello_world.c
+...
 ```
 видим, что верхушка дерева разделилась на две ветки: main и mybranch
 
@@ -296,7 +287,7 @@ To https://github.com/Hadomir01/bulochka
 branch 'mybranch' set up to track 'origin/mybranch'.
 ```
 на удаленке была создана новая ветка:
-![alt text](image-1.png)
+![alt text](imgs/image-1.png)
 
 17. **вернемся к старой ветке и запушим её:**
 ```git
@@ -311,5 +302,5 @@ To https://github.com/Hadomir01/bulochka
 branch 'main' set up to track 'origin/main'.
 ```
 обновил удаленную ветку main:s
-![alt text](image-2.png)
+![alt text](imgs/image-2.png)
 </details>
