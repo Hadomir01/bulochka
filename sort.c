@@ -15,3 +15,8 @@ void bubbleSort(int arr[], int n) { //Это сортировка пузырьк
         if (!swapped) break;
     }
 }
+
+int main() {
+    int a[3] = {1, 2};
+    bubbleSort(a, 3);
+}
