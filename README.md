@@ -173,7 +173,7 @@ remote: Resolving deltas: 100% (2/2), done.
 ```
 Всего у меня получилось 8 коммитов. Почему? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
 
-## Теперь задания с ветками
+### Теперь задания с ветками
 
 1.2. **создаем новую ветку...**
 
@@ -510,4 +510,123 @@ Your branch is ahead of 'origin/mybranch' by 1 commit.
 ![alt text](imgs/image-4.png)
 
 сохранились изменения без printf
+
+## теперь поиграемся с ff-merge
+
+1. **создадим файл greeting.txt и закоммитим это изменение**
+
+```git 
+[mybranch 8addf7b] Add file greeting.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 greeting.txt
+```
+
+2. **добавим в новый файл "hello!". Закоммитим изменение**
+
+```git 
+[mybranch f27d53d] Add content to greeting.txt
+ 1 file changed, 1 insertion(+)
+```
+
+3-4. **создадим новую ветку и перейдем в нее**
+
+```git
+Switched to branch 'feature/uppercase'
+```
+
+5. **git status:**
+```git
+On branch feature/uppercase
+nothing to commit, working tree clean
+```
+тут пусто...
+
+6-7. **изменим содержимое файла и закоммитим...**
+
+8. **git branch:**
+```git
+* feature/uppercase
+  main
+  mybranch
+```
+показывает, что мы в feature/uppercase...
+
+9. **git log:**
+```git
+* 0a4646d (HEAD -> feature/uppercase) Изменил регистр надписи в greetings.txt
+* f27d53d (mybranch) Add content to greeting.txt
+* 8addf7b Add file greeting.txt
+* 531fadb (origin/mybranch) Добавил .gitignore
+* 007a4da Изменил sort.c
+* 786a589 создал файл с фотографиями
+* 15d2900 создал файл file1.txt
+| * 7b871d9 (origin/main, main) Новые добавления README.md (оценка 4)
+| * 6a441f6 Доп. изменения README.md
+...
+```
+
+10-11. **перейдем в основную ветку и посмотрим на содержимое greeting.txt**
+
+```bash
+cat: greeting.txt: No such file or directory
+```
+в основной ветке такого файла нет, он есть только в mybranch и feature/uppercase
+
+значит, идем в ветку mybranch...
+здесь команда cat выводит "hello!"
+
+12. **сравним ветки mybranch и feature/uppercase**
+
+```git
+diff --git a/greeting.txt b/greeting.txt
+index 3462721..29adda4 100644
+--- a/greeting.txt
++++ b/greeting.txt
+@@ -1 +1 @@
+-hello!
+\ No newline at end of file
++HELLO!
+\ No newline at end of file
+```
+разница в надписях: в одной веткона в нижнем регистре, в другой в верхнем...
+
+13. **объединим ветки mybranch и feature/uppercase**
+```git
+Updating f27d53d..0a4646d
+Fast-forward
+ greeting.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+14. **проверим содержимое командой cat:**
+```bash
+HELLO!
+```
+вывел надпись в верхнем регистре(последнее изменение)
+
+15. **удалим feature/uppercase:**
+```git
+Deleted branch feature/uppercase (was 0a4646d).
+```
+
+16. **смержим ветки mybranch и main, перейдя в main**
+```git
+Merge made by the 'ort' strategy.
+...                                                 
+6 files changed, 7 insertions(+)
+```
+
+17. **git log:**
+```git
+*   8177c49 (HEAD -> main) Смержил mybranch в main
+|\  
+| * 0a4646d (mybranch) Изменил регистр надписи в greetings.txt
+| * f27d53d Add content to greeting.txt
+| * 8addf7b Add file greeting.txt
+| * 531fadb (origin/mybranch) Добавил .gitignore
+| * 007a4da Изменил sort.c
+```
+самый последний коммит - merge commit хранит объединение веток main и mybranch
+
+
 </details>
