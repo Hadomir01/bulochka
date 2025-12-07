@@ -628,5 +628,59 @@ Merge made by the 'ort' strategy.
 ```
 самый последний коммит - merge commit хранит объединение веток main и mybranch
 
+</details>
+
+<details>
+<summary> На 5... </summary>
+
+## На оценку 5
+
+1-3. **создадим новую ветку branch1 и файл в ней с надписью. закоммитим это изменение**
+
+
+4-5. **вернемся в main и проделаем то же самое, только с друогой надписью. также закоммитим изменение**
+
+6. **git log:**
+```git
+* 0b0a586 (HEAD -> main) Добавил file.txt
+| * 67ac845 (branch1) Добавил file.txt
+|/  
+* ea83e61 (origin/main) обновил README.md до 4+
+*   8177c49 Смержил mybranch в main
+```
+два разных коммита содержат изменения одинаковых строк.
+
+7. **попробуем смержить branch1 в main**
+```git 
+Auto-merging file.txt
+CONFLICT (add/add): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+возник merge-конфликт, так как git не знает, какое изменение брать за основу...
+
+8. **git status:**
+```git 
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      file.txt
+```
+
+9. **попробуем избавиться от конфликта, приняв текущее изменение(ветки main)**
+
+10. **git log:**
+```git
+* 0b0a586 (HEAD -> main) Добавил file.txt
+* ea83e61 (origin/main) обновил README.md до 4+
+*   8177c49 Смержил mybranch в main
+```
+нет коммита из ветки branch1
 
 </details>
