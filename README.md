@@ -171,11 +171,13 @@ Total 9 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), done.
 ...
 ```
+
+![alt text](imgs/image.png)
 Всего у меня получилось 8 коммитов. Почему? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
 
-### Теперь задания с ветками
+## Теперь задания с ветками
 
-1.2. **создаем новую ветку...**
+1-2. **создаем новую ветку...**
 
 проверяем:
 
@@ -683,4 +685,61 @@ Unmerged paths:
 ```
 нет коммита из ветки branch1
 
+
+## теперь попробуем починить m-конфликт для программы на python
+
+1-2. **создадим mergesort.py и добавим туда код... закоммитим изменение**
+
+3. **теперь создадим новую ветку Mergesort-Impl...**
+
+4-5. **в этой ветке заменим содержимое mergesort.py... не забудем закоммитить изменения**
+
+```git
+[Mergesort-Impl 62e129a] Изменил mergesort.py
+ 1 file changed, 36 insertions(+), 3 deletions(-)
+```
+
+6-7. **возвращаемя в main и меняем содержимое mergesort.py... коммитим изменение**
+
+```git
+[main 5aed88e] Изменил mergesort.py
+ 1 file changed, 35 insertions(+), 3 deletions(-)
+```
+
+8. **git log:**
+
+```git
+* 5aed88e (HEAD -> main) Изменил mergesort.py
+* 0b39ada Создал mergesort.py
+*   77de7d9 (origin/main) Merge branch 'branch1'
+...
+```
+показывает коммит изменения mergesort.py в main
+
+а если прописать git log --oneline --graph -all (git lol):
+```git
+* 5aed88e (HEAD -> main) Изменил mergesort.py
+| * 62e129a (Mergesort-Impl) Изменил mergesort.py
+|/  
+* 0b39ada Создал mergesort.py
+...
+```
+из одного коммита, где был создан mergesort.py исходят 2 коммита, где файл был изменен
+
+9. **git branch:**
+```git
+  Mergesort-Impl
+  branch1
+* main
+  mybranch
+```
+
+10. **попробуем смержить Mergesort-Impl в main**
+
+```git 
+Auto-merging mergesort.py
+CONFLICT (content): Merge conflict in mergesort.py
+Automatic merge failed; fix conflicts and then commit the result.
+```
+возник m-конфликт, который нужно исправить
 </details>
