@@ -172,7 +172,7 @@ remote: Resolving deltas: 100% (2/2), done.
 ...
 ```
 
-![alt text](imgs/image.png)
+![alt text](Programming_C/Lab_9/imgs/image.png)
 Всего у меня получилось 8 коммитов. Почему? Просто чуть ранее я решил немного поиграться с гитом: посоздавал файлы, папки, поудалаял их.
 
 ## Теперь задания с ветками
@@ -286,7 +286,7 @@ To https://github.com/Hadomir01/bulochka
 branch 'mybranch' set up to track 'origin/mybranch'.
 ```
 на удаленке была создана новая ветка:
-![alt text](imgs/image-1.png)
+![alt text](Programming_C/Lab_9/imgs/image-1.png)
 
 17. **вернемся к старой ветке и запушим её:**
 ```git
@@ -301,7 +301,7 @@ To https://github.com/Hadomir01/bulochka
 branch 'main' set up to track 'origin/main'.
 ```
 обновил удаленную ветку main:
-![alt text](imgs/image-2.png)
+![alt text](Programming_C/Lab_9/imgs/image-2.png)
 </details>
 
 <details>
@@ -505,11 +505,11 @@ Your branch is ahead of 'origin/mybranch' by 1 commit.
 23. **запушим этот коммит на удаленку**
 
 вот как выглядит mybranch на удаленке
-![alt text](imgs/image-3.png)
+![alt text](Programming_C/Lab_9/imgs/image-3.png)
 
 и если мы проверим sort.c ...
 
-![alt text](imgs/image-4.png)
+![alt text](Programming_C/Lab_9/imgs/image-4.png)
 
 сохранились изменения без printf
 
