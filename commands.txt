@@ -1,0 +1,15 @@
+// Важные команды, на случай если забуду...
+git status
+git add
+git commit -m ""
+git push
+git log
+git lol
+git giff
+git branch
+git switch
+git merge
+git reset --hard HEAD~1
+git submodule add
+git help
+...
