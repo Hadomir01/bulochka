@@ -10,6 +10,7 @@ git branch
 git switch
 git merge
 git reset --hard HEAD~1
+git push origin main --force
 git submodule add
 git help
 ...
