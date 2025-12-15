@@ -1,3 +1,3 @@
-[submodule "Programming_C/Lab_9/new_submodule"]
-	path = Programming_C/Lab_9/new_submodule
+[submodule "new_submodule"]
+	path = new_submodule
 	url = https://github.com/Hadomir01/Programming_Py
