@@ -12,5 +12,6 @@ git merge
 git reset --hard HEAD~1
 git push origin main --force
 git submodule add
+git submodule update --init --recursive
 git help
 ...
