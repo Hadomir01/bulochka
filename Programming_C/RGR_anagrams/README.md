@@ -39,7 +39,8 @@ RGR_anagrams/
 │   └── main.cpp
 ├── CMakeLists.txt
 ├── config.conf
-└── README.md
+├── README.md
+└── RGR.pgf
 ```
 
 ### Компиляция и запуск
@@ -57,3 +58,5 @@ make
 ```bash
 ./anagram_generator input.txt
 ```
+
+### Также можно посмотреть [Отчет](My_git/Programming_C/RGR_anagrams/RGR.pdf) по проделанной работе.

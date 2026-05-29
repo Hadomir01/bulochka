@@ -12,6 +12,16 @@ add_executable(anagram_generator
 
 target_include_directories(anagram_generator PRIVATE include)
 
-if(WIN32)
-    target_compile_definitions(anagram_generator PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
+find_library(CMOCKA_LIB cmocka REQUIRED)
+
+add_executable(test_anagram
+    test/test_anagram.cpp
+    src/anagram_utils.cpp
+    src/config.cpp
+)
+
+target_include_directories(test_anagram PRIVATE include)
+target_link_libraries(test_anagram PRIVATE ${CMOCKA_LIB})
+
+enable_testing()
+add_test(NAME anagram_tests COMMAND test_anagram)
