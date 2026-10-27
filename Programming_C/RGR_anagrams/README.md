@@ -58,5 +58,3 @@ make
 ```bash
 ./anagram_generator input.txt
 ```
-
-### Также можно посмотреть [Отчет](My_git/Programming_C/RGR_anagrams/RGR.pdf) по проделанной работе.
