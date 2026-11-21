@@ -295,7 +295,7 @@ int main() {
         DeleteVertex(arr[i], &root, &shrink);
         printf("Обход дерева после удаления вершины [%d] (->): ", arr[i]);
         getRound_L_R(root);
-        printf("\n\n");
+        printf("\n");
     }
 
     freeTree(root);
